@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, VERSION } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Adress } from './models/adress';
+import { Adress } from './adress';
+import { Estado } from './models/estado';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { Adress } from './models/adress';
 })
 export class AppComponent  {
   formulario: FormGroup;
+  estadosLista: Estado[] = new Array<Estado>();
   constructor( private formBuilder: FormBuilder, private http: HttpClient){}
   ngOnInit() {
     this.formulario = this.formBuilder.group({
@@ -28,8 +30,8 @@ export class AppComponent  {
      
     });
 
-
-  
+this.estados();
+console.log(this.estadosLista);
   }
 
   OnSubmit() {
@@ -54,6 +56,10 @@ export class AppComponent  {
         })
       }
     }
+  }
+
+  estados(){
+this.http.get<Estado[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados').subscribe(data=> console.log(data.forEach(estado => {this.estadosLista.push(estado) })))
   }
  
   

@@ -57,7 +57,9 @@
 
 <div class="col">
 <label for="state" style="color: white">State</label>
-<input type="text" id="state" class="form-control" placeholder="State" style=" background-color: #8470FF; color: white;" formControlName="estado" >
+<select class="form-select" style="height: 40px; background-color: #8470FF; color: white; border: 1px solid white" formControlName="estado">
+<option *ngFor="let estado of estadosLista"[value] = "estado.sigla">{{estado.nome}}</option>
+</select>
 </div>
 </div>
 </div>
