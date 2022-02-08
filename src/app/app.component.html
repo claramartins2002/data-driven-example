@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container" style="padding-top: 5%;">
+
+<form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="OnSubmit()" style="background-color: #8470FF; padding: 3% 3% 3% 3%"> 
+
+<h4 style="color: white">Data Driven Example</h4>
+
+<div class="form-group">
+  <label for="nome" style="color: white">Name</label>
+  <input type="text" class="form-control" formControlName="nome" style=" background-color: #8470FF; color: white;"  placeholder="your name here" required>
+  <div *ngIf="!formulario.get('nome').valid && formulario.get('nome').touched" style="color: white">Name is required!</div>
+</div>
+
+<div class="form-group">
+    <label for="email" style="color: white">Email</label>
+    <input type="email" style=" background-color: #8470FF; color: white;" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="name@email.com" >
+    <div *ngIf="!formulario.get('email').valid && formulario.get('email').touched" style="color: white">Enter a valid email!</div>
+</div>
+<div formGroupName="endereco">
+<div class="form-row" style="margin: 5% 1% 5% 1%" >
+
+  <div class="col">
+  <label for="cep" style="color: white">CEP</label>
+    <input type="text" id="cep" formControlName="cep" class="form-control" placeholder="XXXXX-XXX" style=" background-color: #8470FF; color: white;"  required (blur)="searchCep(formulario.get('endereco.cep').value)">
+    <div *ngIf="!formulario.get('endereco.cep').valid && formulario.get('endereco.cep').touched" style="color: white">CEP is required!</div>
+  </div>
+
+  <div class="col">
+  <label for="number" style="color: white">Number</label>
+    <input  id="number" type="text" class="form-control" placeholder="house's number here" style=" background-color: #8470FF; color: white;" formControlName="numero" required >
+    <div *ngIf="!formulario.get('endereco.numero').valid && formulario.get('endereco.numero').touched" style="color: white">House's number is required!</div>
+  </div>
+
+  <div class="col">
+  <label for="complement" style="color: white">Complement</label>
+  <input type="text" id="complement" class="form-control" placeholder="optional" style=" background-color: #8470FF; color: white;" formControlName="complemento"  >
+</div>
+
+</div>
+
+<div class="form-group">
+<label for="street" style="color: white">Street</label>
+<input type="text" class="form-control" id="street" style=" background-color: #8470FF; color: white;"  placeholder="your street here" formControlName="rua">
+</div>
+
+<div class="form-row" style="margin: 5% 1% 5% 1%">
+
+<div class="col">
+<label for="district" style="color: white">District</label>
+<input id="district"  type="text" class="form-control" placeholder="District" style=" background-color: #8470FF; color: white;" formControlName="bairro" >
+</div>
+
+<div class="col">
+<label for="city" style="color: white">City</label>
+  <input id="city" type="text" class="form-control" placeholder="City" style=" background-color: #8470FF; color: white;" formControlName="cidade">
+</div>
+
+<div class="col">
+<label for="state" style="color: white">State</label>
+<input type="text" id="state" class="form-control" placeholder="State" style=" background-color: #8470FF; color: white;" formControlName="estado" >
+</div>
+</div>
+</div>
+
+
+
+<button type="submit" class="btn" [disabled]="!formulario.valid" style=" background-color: white; width: 25%; margin-left: 75%;">Save</button>
+
+</form>
+</div>
+<app-debug [form]="formulario"></app-debug>
