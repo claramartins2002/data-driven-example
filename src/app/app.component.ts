@@ -13,10 +13,12 @@ import { Estado } from './models/estado';
 export class AppComponent  {
   formulario: FormGroup;
   estadosLista: Estado[] = new Array<Estado>();
+  cepInvalido: boolean = false;
   constructor( private formBuilder: FormBuilder, private http: HttpClient){}
   ngOnInit() {
     this.formulario = this.formBuilder.group({
       nome: [null, Validators.required],
+      genero: [null],
       email: [null, [Validators.email, Validators.required]],
       endereco: this.formBuilder.group({
         numero: [null, Validators.required],
@@ -44,6 +46,7 @@ console.log(this.estadosLista);
     if(cep !=""){
       var validaCep = /^[0-9]{8}$/;
       if(validaCep.test(cep)){
+        this.cepInvalido = false;
         this.http.get<Adress>('https://viacep.com.br/ws/'+cep+'/json').subscribe(data=> {
          this.formulario.patchValue ({
            endereco: {
@@ -54,6 +57,9 @@ console.log(this.estadosLista);
            }
          })
         })
+      }
+      else {
+       this.cepInvalido = true;
       }
     }
   }
