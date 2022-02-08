@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, VERSION } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Adress } from './models/adress';
-import { Estado } from './models/estado';
-import { EstadosService } from './service/estados.service';
+
 
 @Component({
   selector: 'my-app',
@@ -12,8 +11,7 @@ import { EstadosService } from './service/estados.service';
 })
 export class AppComponent  {
   formulario: FormGroup;
-  estados: Estado[];
-  constructor(private estado: EstadosService, private formBuilder: FormBuilder, private http: HttpClient){}
+  constructor( private formBuilder: FormBuilder, private http: HttpClient){}
   ngOnInit() {
     this.formulario = this.formBuilder.group({
       nome: [null, Validators.required],
@@ -29,6 +27,7 @@ export class AppComponent  {
       })
      
     });
+
 
   
   }
