@@ -16,16 +16,14 @@
     <input type="email" style=" background-color: #8470FF; color: white;" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="name@email.com" >
     <div *ngIf="!formulario.get('email').valid && formulario.get('email').touched" style="color: white">Enter a valid email!</div>
 </div>
-<label style="color: white">Genrer </label>
+<label style="color: white">Genred </label>
 
 <div class="form-row" style="margin: 1% 1% 3% 1%; color: white; border: 1px solid white; padding: 1% 1% 1% 1%" >
 
-<div class="col">
 
-</div>
 <div class="col">
   <div class="form-check">
-<input class="form-check-input" value="female" type="radio" formControlName="genero" name="flexRadioDefault" id="flexRadioDefault1" >
+<input class="form-check-input" value="female" type="radio" formControlName="genero" name="genero" id="flexRadioDefault1" >
 <label class="form-check-label" for="flexRadioDefault1" >
  Female
 </label>
@@ -33,7 +31,7 @@
 </div>
 <div class="col">
   <div class="form-check">
-<input class="form-check-input" value="male" type="radio" formControlName="genero" name="flexRadioDefault" id="flexRadioDefault2">
+<input class="form-check-input" value="male" type="radio" formControlName="genero" name="genero" id="flexRadioDefault2">
 <label class="form-check-label" for="flexRadioDefault2" >
 Male
 </label>
@@ -41,7 +39,7 @@ Male
 </div>
 <div class="col">
 <div class="form-check">
-<input class="form-check-input" value="non binary" type="radio" formControlName="genero" name="flexRadioDefault" id="flexRadioDefault2">
+<input class="form-check-input" value="non binary" type="radio" formControlName="genero" name="genero" id="flexRadioDefault2">
 <label class="form-check-label" for="flexRadioDefault2" >
 Non binary</label>
 </div>
